@@ -1,0 +1,2 @@
+Ctrl + . (menu contextual)
+Ctrl + shift + h (con la palabra seleccionada abre el bscador y muestra todas las ocurrencias, y puedes modificarlas de golpe)

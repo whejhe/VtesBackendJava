@@ -1,0 +1,28 @@
+Genericas:
+- Auto-Collapse Folders (opcional)
+- Better Align
+- Error Lens
+- Format in context menus
+- Git Graph
+- Material Icon Theme
+
+Extensiones para visual (backend-java)
+- Extension Pack for java
+- Language Support for java
+- Debugger for java
+- Test runner for java
+- Maven for java
+- Project Manager for java
+- Gradle for java
+- IntelliCode
+- Spring Boot Extension Pack
+- Spring Boot Tools
+- Spring Initializr java Support
+- Spring Boot Dashboard
+- Spring Code Generator
+- XML
+- Rainbow Tags
+- Path Intellisense
+- Lombok Annotations Support for VS Code
+
+
