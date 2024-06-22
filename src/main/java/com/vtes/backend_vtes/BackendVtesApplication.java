@@ -1,13 +1,13 @@
-package com.proyect.vtes;
+package com.vtes.backend_vtes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class VtesApplication {
+public class BackendVtesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(VtesApplication.class, args);
+		SpringApplication.run(BackendVtesApplication.class, args);
 	}
 
 }
