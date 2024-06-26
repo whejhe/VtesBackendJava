@@ -1,5 +1,6 @@
 package com.vtes.backend_vtes.Repositories;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.vtes.backend_vtes.Entities.Report;
@@ -10,19 +11,34 @@ public interface ReportRepository extends JpaRepository<Report, Integer> {
     // finders
     Report findByReport_id(Integer report_id);
 
-    Report findByUser_id(Integer user_id);
+    List<Report> findByUser_id(Integer user_id);
 
-    Report findByCard_id(Integer card_id);
+    List<Report> findByCard_id(Integer card_id);
 
-    Report findByCard_name(String card_name);
+    List<Report> findByCard_name(String card_name);
 
-    Report findByCard_author(String card_author);
+    List<Report> findByCard_author(String card_author);
 
-    Report findByEmail_reporter(String email_reporter);
+    List<Report> findByEmail_reporter(String email_reporter);
 
-    Report findByName_user_reporter(String name_user_reporter);
+    List<Report> findByName_user_reporter(String name_user_reporter);
 
-    Report findByReason(String reason);
+    List<Report> findByReason(String reason);
 
-    // no need to define save(), delete() and update() methods, they are already defined in JpaRepository
+    // Delete
+    void deleteByReport_id(Integer report_id);
+
+    void deleteByUser_id(Integer user_id);
+
+    void deleteByCard_id(Integer card_id);
+
+    void deleteByCard_name(String card_name);
+
+    void deleteByCard_author(String card_author);
+
+    void deleteByEmail_reporter(String email_reporter);
+
+    void deleteByName_user_reporter(String name_user_reporter);
+
+    void deleteByReason(String reason);
 }

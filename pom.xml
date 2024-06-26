@@ -75,7 +75,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+	
+   <dependency>
+     <groupId>com.agapsys.libs</groupId>
+     <artifactId>exception-pack</artifactId>
+     <version>0.1.0</version>
+   </dependency>
+ </dependencies>
 
 	<build>
 		<plugins>

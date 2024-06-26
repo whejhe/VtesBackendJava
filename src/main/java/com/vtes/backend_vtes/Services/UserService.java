@@ -13,64 +13,108 @@ public class UserService {
     private UserRepository userRepository;
 
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        try {
+            return userRepository.findAll();
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener todos los usuarios: " + e.getMessage());
+        }
     }
 
     public Optional<User> getUserById(Integer id) {
-        return userRepository.findById(id);
+        try {
+            return userRepository.findById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener el usuario con ID " + id + ": " + e.getMessage());
+        }
     }
 
     public User saveUser(User user) {
-        return userRepository.save(user);
+        try {
+            return userRepository.save(user);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al guardar el usuario: " + e.getMessage());
+        }
     }
 
     public void deleteUser(Integer id) {
-        userRepository.deleteById(id);
+        try {
+            userRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al eliminar el usuario con ID " + id + ": " + e.getMessage());
+        }
     }
 
     public User updateUser(User user) {
-        Optional<User> existingUser = userRepository.findById(user.getUser_id());
-        if (existingUser.isPresent()) {
-            User updatedUser = existingUser.get();
-            updatedUser.setUsername(user.getUsername());
-            updatedUser.setLastname(user.getLastname());
-            updatedUser.setBirthdate(user.getBirthdate());
-            updatedUser.setCountry(user.getCountry());
-            updatedUser.setCity(user.getCity());
-            updatedUser.setAddress(user.getAddress());
-            updatedUser.setPhone(user.getPhone());
-            updatedUser.setState_account(user.getState_account());
-            updatedUser.setNick(user.getNick());
-            updatedUser.setEmail(user.getEmail());
-            updatedUser.setAvatar_url(user.getAvatar_url());
-            updatedUser.setPassword(user.getPassword());
-            return userRepository.save(updatedUser);
-        } else {
-            throw new RuntimeException("User not found with id: " + user.getUser_id());
+        try {
+            Optional<User> existingUser = userRepository.findById(user.getUser_id());
+            if (existingUser.isPresent()) {
+                User updatedUser = existingUser.get();
+                updatedUser.setUsername(user.getUsername());
+                updatedUser.setLastname(user.getLastname());
+                updatedUser.setBirthdate(user.getBirthdate());
+                updatedUser.setCountry(user.getCountry());
+                updatedUser.setCity(user.getCity());
+                updatedUser.setAddress(user.getAddress());
+                updatedUser.setPhone(user.getPhone());
+                updatedUser.setState_account(user.getState_account());
+                updatedUser.setNick(user.getNick());
+                updatedUser.setEmail(user.getEmail());
+                updatedUser.setAvatar_url(user.getAvatar_url());
+                updatedUser.setPassword(user.getPassword());
+                return userRepository.save(updatedUser);
+            } else {
+                throw new RuntimeException("User not found with id: " + user.getUser_id());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error al actualizar el usuario: " + e.getMessage());
         }
     }
 
     public List<User> getUserByUsername(String username) {
-        return userRepository.findByUsername(username);
+        try {
+            return userRepository.findByUsername(username);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener el usuario con username " + username + ": " + e.getMessage());
+        }
     }
 
     public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+        try {
+            return userRepository.findByEmail(email);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener el usuario con email " + email + ": " + e.getMessage());
+        }
     }
 
     public User getUserByNick(String nick) {
-        return userRepository.findByNick(nick);
+        try {
+            return userRepository.findByNick(nick);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener el usuario con nick " + nick + ": " + e.getMessage());
+        }
     }
 
     public User getUserByPhone(String phone) {
-        return userRepository.findByPhone(phone);
+        try {
+            return userRepository.findByPhone(phone);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener el usuario con phone " + phone + ": " + e.getMessage());
+        }
     }
 
     public List<User> getUserByCity(String city) {
-        return userRepository.findByCity(city);
+        try {
+            return userRepository.findByCity(city);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener el usuario con city " + city + ": " + e.getMessage());
+        }
     }
 
     public List<User> getUserByCountry(String country) {
-        return userRepository.findByCountry(country);
+        try {
+            return userRepository.findByCountry(country);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener el usuario con country " + country + ": " + e.getMessage());
+        }
     }
 }

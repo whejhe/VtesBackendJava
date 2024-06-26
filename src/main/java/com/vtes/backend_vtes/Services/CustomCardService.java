@@ -14,33 +14,59 @@ public class CustomCardService {
 
     // GETTERS
     public List<CustomCard> getAllCustomCards() {
-        return customCardRepository.findAll();
+        try{
+            return (List<CustomCard>) customCardRepository.findAll();
+            // return customCardRepository.findAll();
+        }catch(Exception e){
+            throw new RuntimeException("Error al obtener todas las cartas: " + e.getMessage());
+        }
     }
 
     public Optional<CustomCard> getCustomCardById(Integer id) {
-        return customCardRepository.findById(id);
+        try{
+            return customCardRepository.findById(id);
+        }catch(Exception e){
+            throw new RuntimeException("Error al obtener la carta con ID " + id + ": " + e.getMessage());
+        }
     }
 
     public CustomCard getCustomCardByCustomCardName(String customCardName) {
-        return customCardRepository.findByCustom_card_name(customCardName);
+        try{
+            return customCardRepository.findByCustom_card_name(customCardName);
+        }catch(Exception e){
+            throw new RuntimeException("Error al obtener la carta con nombre " + customCardName + ": " + e.getMessage());
+        }
     }
 
     public List<CustomCard> getCustomCardsByAuthor(String author) {
-        return (List<CustomCard>) customCardRepository.findByAuthor(author);
+        try{
+            return (List<CustomCard>) customCardRepository.findByAuthor(author);
+        }catch(Exception e){
+            throw new RuntimeException("Error al obtener las cartas del autor " + author + ": " + e.getMessage());
+        }
     }
 
     public List<CustomCard> getCustomCardsByClan(String clan) {
-        return customCardRepository.findByClan(clan);
+        try{
+            return (List<CustomCard>) customCardRepository.findByClan(clan);
+        }catch(Exception e){
+            throw new RuntimeException("Error al obtener las cartas del clan " + clan + ": " + e.getMessage());
+        }
     }
 
     // SAVE
     public CustomCard saveCustomCard(CustomCard customCard) {
-        return customCardRepository.save(customCard);
+        try{
+            return customCardRepository.save(customCard);
+        }catch(Exception e){
+            throw new RuntimeException("Error al guardar la carta: " + e.getMessage());
+        }
     }
 
     // UPDATE
     public CustomCard updateCustomCard(CustomCard customCard) {
-        Optional<CustomCard> existingCustomCard = customCardRepository.findById(customCard.getCustom_card_id());
+        try{
+            Optional<CustomCard> existingCustomCard = customCardRepository.findById(customCard.getCustom_card_id());
         if (existingCustomCard.isPresent()) {
             CustomCard updatedCustomCard = existingCustomCard.get();
             updatedCustomCard.setUser_id(customCard.getUser_id());
@@ -61,15 +87,26 @@ public class CustomCardService {
         } else {
             throw new RuntimeException("Custom card not found with id: " + customCard.getCustom_card_id());
         }
+        }catch(Exception e){
+            throw new RuntimeException("Error al actualizar la carta: " + e.getMessage());
+        }
     }
 
     // DELETE
     public void deleteCustomCard(Integer id) {
-        customCardRepository.deleteById(id);
+        try{
+            customCardRepository.deleteById(id);
+        }catch(Exception e){
+            throw new RuntimeException("Error al eliminar la carta con ID " + id + ": " + e.getMessage());
+        }
     }
 
     // DELETE BY NAME
     public void deleteCustomCardByName(String customCardName) {
-        customCardRepository.findByCustom_card_name(customCardName);
+        try{
+            customCardRepository.findByCustom_card_name(customCardName);
+        }catch(Exception e){
+            throw new RuntimeException("Error al eliminar la carta con nombre " + customCardName + ": " + e.getMessage());
+        }
     }
 }

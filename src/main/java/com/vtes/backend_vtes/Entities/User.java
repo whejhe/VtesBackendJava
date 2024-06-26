@@ -25,6 +25,12 @@ import lombok.*;
 @Entity
 @Table(name = "usuario")
 public class User implements Serializable {
+    public User(int user_id2, String username2, String lastname2, String string, String country2, String city2,
+            String address2, String phone2, boolean b, String nick2, String email2, String avatar_url2,
+            String password2) {
+        //TODO Auto-generated constructor stub
+    }
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY, generator="user_sequence")
     @SequenceGenerator(name="user_sequence", sequenceName="user_sequence", allocationSize=100)

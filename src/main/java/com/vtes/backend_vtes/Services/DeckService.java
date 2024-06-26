@@ -14,33 +14,58 @@ public class DeckService {
 
     // GETTERS
     public List<Deck> getAllDecks() {
-        return deckRepository.findAll();
+        try{
+            return deckRepository.findAll();
+        }catch(Exception e){
+            throw new RuntimeException("Error al obtener todas las cartas: " + e.getMessage());
+        }
     }
 
     public Optional<Deck> getDeckById(Integer id) {
-        return deckRepository.findById(id);
+        try{
+            return deckRepository.findById(id);
+        }catch(Exception e){
+            throw new RuntimeException("Error al obtener la carta con ID " + id + ": " + e.getMessage());
+        }
     }
 
     public Deck getDeckByDeckName(String deckName) {
-        return deckRepository.findByDeck_name(deckName);
+        try{
+            return deckRepository.findByDeck_name(deckName);
+        }catch(Exception e){
+            throw new RuntimeException("Error al obtener la carta con nombre " + deckName + ": " + e.getMessage());
+        }
     }
 
     public List<Deck> getDecksByAuthor(String author) {
-        return deckRepository.findByAuthor(author);
+        try{
+            return deckRepository.findByAuthor(author);
+        }catch(Exception e){
+            throw new RuntimeException("Error al obtener las cartas del autor " + author + ": " + e.getMessage());
+        }
     }
 
     public List<Deck> getDecksByCategory(String category) {
-        return deckRepository.findByCategory(category);
+        try{
+            return deckRepository.findByCategory(category);
+        }catch(Exception e){
+            throw new RuntimeException("Error al obtener las cartas del autor " + category + ": " + e.getMessage());
+        }
     }
 
     // SAVE
     public Deck saveDeck(Deck deck) {
-        return deckRepository.save(deck);
+        try{
+            return deckRepository.save(deck);
+        }catch(Exception e){
+            throw new RuntimeException("Error al guardar la carta: " + e.getMessage());
+        }
     }
 
     // UPDATE
     public Deck updateDeck(Deck deck) {
-        Optional<Deck> existingDeck = deckRepository.findById(deck.getDeck_id());
+        try{
+            Optional<Deck> existingDeck = deckRepository.findById(deck.getDeck_id());
         if (existingDeck.isPresent()) {
             Deck updatedDeck = existingDeck.get();
             updatedDeck.setUser_id(deck.getUser_id());
@@ -53,20 +78,35 @@ public class DeckService {
         } else {
             throw new RuntimeException("Deck not found with id: " + deck.getDeck_id());
         }
+        }catch(Exception e){
+            throw new RuntimeException("Error al actualizar la carta: " + e.getMessage());
+        }
     }
 
     // DELETE
     public void deleteDeck(Integer id) {
-        deckRepository.deleteById(id);
+        try{
+            deckRepository.deleteById(id);
+        }catch(Exception e){
+            throw new RuntimeException("Error al borrar la carta: " + e.getMessage());
+        }
     }
 
     // DELETE BY NAME
     public void deleteDeckByName(String deckName) {
-        deckRepository.findByDeck_name(deckName);
+        try{
+            deckRepository.findByDeck_name(deckName);
+        }catch(Exception e){
+            throw new RuntimeException("Error al borrar la carta: " + e.getMessage());
+        }
     }
 
     // DELETE BY AUTHOR
     public void deleteDeckByAuthor(String author) {
-        deckRepository.findByAuthor(author);
+        try{
+            deckRepository.findByAuthor(author);
+        }catch(Exception e){
+            throw new RuntimeException("Error al borrar la carta: " + e.getMessage());
+        }
     }
 }
