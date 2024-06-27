@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -20,23 +19,22 @@ import lombok.*;
 @Table(name = "card")
 public class Card implements Serializable {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY, generator="card_sequence")
-    @SequenceGenerator(name="card_sequence", sequenceName="card_sequence", allocationSize=100)
-    private Integer card_id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer cardId;
 
     @NotBlank(message = "El nombre de la carta es obligatorio")
-    private String card_name;
+    private String cardName;
 
     @NotBlank(message = "La URL de la carta es obligatoria")
-    private String card_url;
+    private String cardUrl;
 
     @NotBlank(message = "El tipo de carta es obligatorio")
-    private String card_type;
+    private String cardType;
 
     @NotBlank(message = "El texto de la carta es obligatorio")
-    private String card_text;
+    private String cardText;
 
-    private String ordered_sets;
+    private String orderedSets;
 
     private String title;
 
@@ -48,9 +46,9 @@ public class Card implements Serializable {
 
     private Integer capacity;
 
-    private Integer cost_pool;
+    private Integer costPool;
 
-    private Integer cost_blood;
+    private Integer costBlood;
 
     private String rulings;
 

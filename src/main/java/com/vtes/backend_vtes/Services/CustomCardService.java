@@ -32,7 +32,7 @@ public class CustomCardService {
 
     public CustomCard getCustomCardByCustomCardName(String customCardName) {
         try{
-            return customCardRepository.findByCustom_card_name(customCardName);
+            return customCardRepository.findByCustomCardName(customCardName);
         }catch(Exception e){
             throw new RuntimeException("Error al obtener la carta con nombre " + customCardName + ": " + e.getMessage());
         }
@@ -66,26 +66,26 @@ public class CustomCardService {
     // UPDATE
     public CustomCard updateCustomCard(CustomCard customCard) {
         try{
-            Optional<CustomCard> existingCustomCard = customCardRepository.findById(customCard.getCustom_card_id());
+            Optional<CustomCard> existingCustomCard = customCardRepository.findById(customCard.getCustomCardId());
         if (existingCustomCard.isPresent()) {
             CustomCard updatedCustomCard = existingCustomCard.get();
-            updatedCustomCard.setUser_id(customCard.getUser_id());
-            updatedCustomCard.setCustom_card_name(customCard.getCustom_card_name());
+            updatedCustomCard.setUserId(customCard.getUserId());
+            updatedCustomCard.setCustomCardName(customCard.getCustomCardName());
             updatedCustomCard.setAuthor(customCard.getAuthor());
             updatedCustomCard.setCapacity(customCard.getCapacity());
-            updatedCustomCard.setCustom_card_url(customCard.getCustom_card_url());
+            updatedCustomCard.setCustomCardUrl(customCard.getCustomCardUrl());
             updatedCustomCard.setClan(customCard.getClan());
             updatedCustomCard.setDisciplines(customCard.getDisciplines());
-            updatedCustomCard.setGroup_vampire(customCard.getGroup_vampire());
-            updatedCustomCard.setCustom_card_type(customCard.getCustom_card_type());
-            updatedCustomCard.setLogo_color(customCard.getLogo_color());
-            updatedCustomCard.setCustom_card_text(customCard.getCustom_card_text());
-            updatedCustomCard.setIs_public(customCard.getIs_public());
-            updatedCustomCard.setCost_pool(customCard.getCost_pool());
-            updatedCustomCard.setCost_blood(customCard.getCost_blood());
+            updatedCustomCard.setGroupVampire(customCard.getGroupVampire());
+            updatedCustomCard.setCustomCardType(customCard.getCustomCardType());
+            updatedCustomCard.setLogoColor(customCard.getLogoColor());
+            updatedCustomCard.setCustomCardText(customCard.getCustomCardText());
+            updatedCustomCard.setIsPublic(customCard.getIsPublic());
+            updatedCustomCard.setCostPool(customCard.getCostPool());
+            updatedCustomCard.setCostBlood(customCard.getCostBlood());
             return customCardRepository.save(updatedCustomCard);
         } else {
-            throw new RuntimeException("Custom card not found with id: " + customCard.getCustom_card_id());
+            throw new RuntimeException("Custom card not found with id: " + customCard.getCustomCardId());
         }
         }catch(Exception e){
             throw new RuntimeException("Error al actualizar la carta: " + e.getMessage());
@@ -104,7 +104,7 @@ public class CustomCardService {
     // DELETE BY NAME
     public void deleteCustomCardByName(String customCardName) {
         try{
-            customCardRepository.findByCustom_card_name(customCardName);
+            customCardRepository.findByCustomCardName(customCardName);
         }catch(Exception e){
             throw new RuntimeException("Error al eliminar la carta con nombre " + customCardName + ": " + e.getMessage());
         }

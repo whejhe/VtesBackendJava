@@ -31,7 +31,7 @@ public class LibraryService {
 
     public List<Library> getLibrariesByUserId(Integer userId) {
         try{
-            return libraryRepository.findByUser_id(userId);
+            return libraryRepository.findByUserId(userId);
         }catch(Exception e){
             throw new RuntimeException("Error al obtener las bibliotecas del usuario " + userId + ": " + e.getMessage());
         }
@@ -39,7 +39,7 @@ public class LibraryService {
 
     public List<Library> getLibrariesByDeckId(Integer deckId) {
         try{
-            return libraryRepository.findByDeck_id(deckId);
+            return libraryRepository.findByDeckId(deckId);
         }catch(Exception e){
             throw new RuntimeException("Error al obtener las bibliotecas del deck " + deckId + ": " + e.getMessage());
         }
@@ -47,7 +47,7 @@ public class LibraryService {
 
     public List<Library> getLibrariesByCardId(Integer cardId) {
         try{
-            return libraryRepository.findByCard_id(cardId);
+            return libraryRepository.findByCardId(cardId);
         }catch(Exception e){
             throw new RuntimeException("Error al obtener las bibliotecas del card " + cardId + ": " + e.getMessage());
         }
@@ -65,15 +65,15 @@ public class LibraryService {
     // UPDATE
     public Library updateLibrary(Library library) {
         try{
-            Optional<Library> existingLibrary = libraryRepository.findById(library.getLibrary_id());
+            Optional<Library> existingLibrary = libraryRepository.findById(library.getLibraryId());
             if (existingLibrary.isPresent()) {
                 Library updatedLibrary = existingLibrary.get();
-                updatedLibrary.setUser_id(library.getUser_id());
-                updatedLibrary.setDeck_id(library.getDeck_id());
-                updatedLibrary.setCard_id(library.getCard_id());
+                updatedLibrary.setUserId(library.getUserId());
+                updatedLibrary.setDeckId(library.getDeckId());
+                updatedLibrary.setCardId(library.getCardId());
                 return libraryRepository.save(updatedLibrary);
             } else {
-                throw new RuntimeException("Library not found with id: " + library.getLibrary_id());
+                throw new RuntimeException("Library not found with id: " + library.getLibraryId());
             }
         }catch(Exception e){
             throw new RuntimeException("Error al actualizar la biblioteca: " + e.getMessage());
@@ -92,7 +92,7 @@ public class LibraryService {
     // DELETE BY USER ID
     public void deleteLibrariesByUserId(Integer userId) {
         try{
-            libraryRepository.deleteByUser_id(userId);
+            libraryRepository.deleteByUserId(userId);
         }catch(Exception e){
             throw new RuntimeException("Error al borrar las bibliotecas del usuario " + userId + ": " + e.getMessage());
         }
@@ -101,7 +101,7 @@ public class LibraryService {
     // DELETE BY DECK ID
     public void deleteLibrariesByDeckId(Integer deckId) {
         try{
-            libraryRepository.deleteByDeck_id(deckId);
+            libraryRepository.deleteByDeckId(deckId);
         }catch(Exception e){
             throw new RuntimeException("Error al borrar las bibliotecas del deck " + deckId + ": " + e.getMessage());
         }
@@ -110,7 +110,7 @@ public class LibraryService {
     // DELETE BY CARD ID
     public void deleteLibrariesByCardId(Integer cardId) {
         try{
-            libraryRepository.deleteByCard_id(cardId);
+            libraryRepository.deleteByCardId(cardId);
         }catch(Exception e){
             throw new RuntimeException("Error al borrar las bibliotecas del card " + cardId + ": " + e.getMessage());
         }

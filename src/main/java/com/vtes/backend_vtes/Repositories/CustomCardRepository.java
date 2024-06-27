@@ -9,11 +9,11 @@ import com.vtes.backend_vtes.Entities.CustomCard;
 public interface CustomCardRepository extends JpaRepository<CustomCard, Integer> {
 
     // finders
-    CustomCard findByCustom_card_id(Integer custom_card_id);
+    CustomCard findByCustomCardId(Integer customCardId);
 
-    List<CustomCard> findByUser_id(Integer user_id);
+    List<CustomCard> findByUserId(Integer userId);
 
-    CustomCard findByCustom_card_name(String custom_card_name);
+    CustomCard findByCustomCardName(String customCardName);
 
     List<CustomCard> findByAuthor(String author);
 
@@ -21,13 +21,13 @@ public interface CustomCardRepository extends JpaRepository<CustomCard, Integer>
 
     List<CustomCard> findByDisciplines(String disciplines);
 
-    List<CustomCard> findByCustom_card_type(String custom_card_type);
+    List<CustomCard> findByCustomCardType(String customCardType);
 
     // DELETE BY NAME
-    void deleteByCustom_card_name(String custom_card_name);
+    void deleteByCustomCardName(String customCardName);
 
     // DELETE BY ID
-    void deleteByCustom_card_id(Integer custom_card_id);
+    void deleteByCustomCardId(Integer customCardId);
 
     // DELETE BY AUTHOR
     void deleteByAuthor(String author);

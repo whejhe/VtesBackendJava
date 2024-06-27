@@ -8,7 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -23,15 +22,14 @@ import lombok.*;
 @Table(name = "deck")
 public class Deck implements Serializable {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY, generator="deck_sequence")
-    @SequenceGenerator(name="deck_sequence", sequenceName="deck_sequence", allocationSize=100)
-    private Integer deck_id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer deckId;
 
     @NotNull(message = "El ID de usuario es obligatorio")
-    private Integer user_id;
+    private Integer userId;
 
     @NotBlank(message = "El nombre del mazo es obligatorio")
-    private String deck_name;
+    private String deckName;
 
     private String description;
 
@@ -41,9 +39,9 @@ public class Deck implements Serializable {
     @NotBlank(message = "La categoría es obligatoria")
     private String category;
 
-    private Boolean is_public;
+    private Boolean isPublic;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "userId", insertable = false, updatable = false)
     private User user;
 }

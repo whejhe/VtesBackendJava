@@ -8,17 +8,17 @@ import com.vtes.backend_vtes.Entities.Card;
 @Repository
 public interface CardRepository extends JpaRepository<Card, Integer> {
 
-    Card findByCard_id(Integer card_id);
+    Card findByCardId(Integer cardId);
 
-    Card findByCard_name(String card_name);
+    Card findByCardName(String cardName);
 
     List<Card> findByClan(String clan);
 
     List<Card> findByDisciplines(String disciplines);
 
-    List<Card> findByCard_type(String card_type);
+    List<Card> findByCardType(String cardType);
 
     //DELETE BY NAME
-    void deleteByCard_name(String card_name);
+    void deleteByCardName(String cardName);
 
 }

@@ -31,7 +31,7 @@ public class DeckService {
 
     public Deck getDeckByDeckName(String deckName) {
         try{
-            return deckRepository.findByDeck_name(deckName);
+            return deckRepository.findByDeckName(deckName);
         }catch(Exception e){
             throw new RuntimeException("Error al obtener la carta con nombre " + deckName + ": " + e.getMessage());
         }
@@ -65,18 +65,18 @@ public class DeckService {
     // UPDATE
     public Deck updateDeck(Deck deck) {
         try{
-            Optional<Deck> existingDeck = deckRepository.findById(deck.getDeck_id());
+            Optional<Deck> existingDeck = deckRepository.findById(deck.getDeckId());
         if (existingDeck.isPresent()) {
             Deck updatedDeck = existingDeck.get();
-            updatedDeck.setUser_id(deck.getUser_id());
-            updatedDeck.setDeck_name(deck.getDeck_name());
+            updatedDeck.setUserId(deck.getUserId());
+            updatedDeck.setDeckName(deck.getDeckName());
             updatedDeck.setDescription(deck.getDescription());
             updatedDeck.setAuthor(deck.getAuthor());
             updatedDeck.setCategory(deck.getCategory());
-            updatedDeck.setIs_public(deck.getIs_public());
+            updatedDeck.setIsPublic(deck.getIsPublic());
             return deckRepository.save(updatedDeck);
         } else {
-            throw new RuntimeException("Deck not found with id: " + deck.getDeck_id());
+            throw new RuntimeException("Deck not found with id: " + deck.getDeckId());
         }
         }catch(Exception e){
             throw new RuntimeException("Error al actualizar la carta: " + e.getMessage());
@@ -95,7 +95,7 @@ public class DeckService {
     // DELETE BY NAME
     public void deleteDeckByName(String deckName) {
         try{
-            deckRepository.findByDeck_name(deckName);
+            deckRepository.findByDeckName(deckName);
         }catch(Exception e){
             throw new RuntimeException("Error al borrar la carta: " + e.getMessage());
         }

@@ -72,7 +72,7 @@ public class ReportController {
 
     @PutMapping("/{id}")
     public Report updateReport(@PathVariable Integer id, @RequestBody Report report) {
-        report.setReport_id(id);
+        report.setReportId(id);
         return reportService.saveReport(report);
     }
 

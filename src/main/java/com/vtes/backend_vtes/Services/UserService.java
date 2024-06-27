@@ -46,7 +46,7 @@ public class UserService {
 
     public User updateUser(User user) {
         try {
-            Optional<User> existingUser = userRepository.findById(user.getUser_id());
+            Optional<User> existingUser = userRepository.findById(user.getUserId());
             if (existingUser.isPresent()) {
                 User updatedUser = existingUser.get();
                 updatedUser.setUsername(user.getUsername());
@@ -56,14 +56,14 @@ public class UserService {
                 updatedUser.setCity(user.getCity());
                 updatedUser.setAddress(user.getAddress());
                 updatedUser.setPhone(user.getPhone());
-                updatedUser.setState_account(user.getState_account());
+                updatedUser.setStateAccount(user.getStateAccount());
                 updatedUser.setNick(user.getNick());
                 updatedUser.setEmail(user.getEmail());
-                updatedUser.setAvatar_url(user.getAvatar_url());
+                updatedUser.setAvatarUrl(user.getAvatarUrl());
                 updatedUser.setPassword(user.getPassword());
                 return userRepository.save(updatedUser);
             } else {
-                throw new RuntimeException("User not found with id: " + user.getUser_id());
+                throw new RuntimeException("User not found with id: " + user.getUserId());
             }
         } catch (Exception e) {
             throw new RuntimeException("Error al actualizar el usuario: " + e.getMessage());

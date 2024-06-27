@@ -22,15 +22,15 @@ public class CryptService {
     }
 
     public List<Crypt> getCryptsByUserId(Integer userId) {
-        return cryptRepository.findByUser_id(userId);
+        return cryptRepository.findByUserId(userId);
     }
 
     public List<Crypt> getCryptsByDeckId(Integer deckId) {
-        return cryptRepository.findByDeck_id(deckId);
+        return cryptRepository.findByDeckId(deckId);
     }
 
     public List<Crypt> getCryptsByCardId(Integer cardId) {
-        return cryptRepository.findByCard_id(cardId);
+        return cryptRepository.findByCardId(cardId);
     }
 
     // SAVE
@@ -40,15 +40,15 @@ public class CryptService {
 
     // UPDATE
     public Crypt updateCrypt(Crypt crypt) {
-        Optional<Crypt> existingCrypt = cryptRepository.findById(crypt.getCrypt_id());
+        Optional<Crypt> existingCrypt = cryptRepository.findById(crypt.getCryptId());
         if (existingCrypt.isPresent()) {
             Crypt updatedCrypt = existingCrypt.get();
-            updatedCrypt.setUser_id(crypt.getUser_id());
-            updatedCrypt.setDeck_id(crypt.getDeck_id());
-            updatedCrypt.setCard_id(crypt.getCard_id());
+            updatedCrypt.setUserId(crypt.getUserId());
+            updatedCrypt.setDeckId(crypt.getDeckId());
+            updatedCrypt.setCardId(crypt.getCardId());
             return cryptRepository.save(updatedCrypt);
         } else {
-            throw new RuntimeException("Crypt not found with id: " + crypt.getCrypt_id());
+            throw new RuntimeException("Crypt not found with id: " + crypt.getCryptId());
         }
     }
 
@@ -59,16 +59,16 @@ public class CryptService {
 
     // DELETE BY USER ID
     public void deleteCryptsByUserId(Integer userId) {
-        cryptRepository.deleteByUser_id(userId);
+        cryptRepository.deleteByUserId(userId);
     }
 
     // DELETE BY DECK ID
     public void deleteCryptsByDeckId(Integer deckId) {
-        cryptRepository.deleteByDeck_id(deckId);
+        cryptRepository.deleteByDeckId(deckId);
     }
 
     // DELETE BY CARD ID
     public void deleteCryptsByCardId(Integer cardId) {
-        cryptRepository.deleteByCard_id(cardId);
+        cryptRepository.deleteByCardId(cardId);
     }
 }

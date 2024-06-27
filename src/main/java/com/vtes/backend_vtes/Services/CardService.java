@@ -33,7 +33,7 @@ public class CardService {
 
     public Card getCardByCardName(String cardName) {
         try {
-            return cardRepository.findByCard_name(cardName);
+            return cardRepository.findByCardName(cardName);
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener la carta con nombre " + cardName + ": " + e.getMessage());
         }
@@ -41,7 +41,7 @@ public class CardService {
 
     public List<Card> getCardsByCardType(String cardType) {
         try {
-            return cardRepository.findByCard_type(cardType);
+            return cardRepository.findByCardType(cardType);
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener las cartas del tipo " + cardType + ": " + e.getMessage());
         }
@@ -67,31 +67,31 @@ public class CardService {
     // UPDATE
     public Card updateCard(Card card) {
         try {
-            Optional<Card> existingCard = cardRepository.findById(card.getCard_id());
+            Optional<Card> existingCard = cardRepository.findById(card.getCardId());
             if (existingCard.isPresent()) {
                 Card updatedCard = existingCard.get();
-                updatedCard.setCard_name(card.getCard_name());
-                updatedCard.setCard_url(card.getCard_url());
-                updatedCard.setCard_type(card.getCard_type());
-                updatedCard.setCard_text(card.getCard_text());
-                updatedCard.setOrdered_sets(card.getOrdered_sets());
+                updatedCard.setCardName(card.getCardName());
+                updatedCard.setCardUrl(card.getCardUrl());
+                updatedCard.setCardType(card.getCardType());
+                updatedCard.setCardText(card.getCardText());
+                updatedCard.setOrderedSets(card.getOrderedSets());
                 updatedCard.setTitle(card.getTitle());
                 updatedCard.setClan(card.getClan());
                 updatedCard.setMultidiscipline(card.getMultidiscipline());
                 updatedCard.setDisciplines(card.getDisciplines());
                 updatedCard.setCapacity(card.getCapacity());
-                updatedCard.setCost_pool(card.getCost_pool());
-                updatedCard.setCost_blood(card.getCost_blood());
+                updatedCard.setCostPool(card.getCostPool());
+                updatedCard.setCostBlood(card.getCostBlood());
                 updatedCard.setRulings(card.getRulings());
                 updatedCard.setSets(card.getSets());
                 updatedCard.setGroups(card.getGroups());
                 return cardRepository.save(updatedCard);
             } else {
-                throw new RuntimeException("Card not found with id: " + card.getCard_id());
+                throw new RuntimeException("Card not found with id: " + card.getCardId());
             }
         } catch (Exception e) {
             throw new RuntimeException(
-                    "Error al actualizar la carta con ID " + card.getCard_id() + ": " + e.getMessage());
+                    "Error al actualizar la carta con ID " + card.getCardId() + ": " + e.getMessage());
         }
     }
 
@@ -107,7 +107,7 @@ public class CardService {
     // DELETE BY NAME
     public void deleteCardByName(String cardName) {
         try{
-            cardRepository.deleteByCard_name(cardName);
+            cardRepository.deleteByCardName(cardName);
         }catch(Exception e){
             throw new RuntimeException("Error al eliminar la carta con nombre " + cardName + ": " + e.getMessage());
         }

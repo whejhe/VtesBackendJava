@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -20,38 +19,37 @@ import lombok.*;
 @Table(name = "report")
 public class Report {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY, generator="report_sequence")
-    @SequenceGenerator(name="report_sequence", sequenceName="report_sequence", allocationSize=100)
-    private Integer report_id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer reportId;
 
-    private Integer user_id;
+    private Integer userId;
 
-    private Integer card_id;
+    private Integer cardId;
 
     @NotBlank(message = "El nombre de la carta es obligatorio")
-    private String card_name;
+    private String cardName;
 
     @NotBlank(message = "El autor de la carta es obligatorio")
-    private String card_author;
+    private String cardAuthor;
 
     @NotBlank(message = "El email del reportero es obligatorio")
-    private String email_reporter;
+    private String emailReporter;
 
     @NotBlank(message = "El nombre del usuario reportero es obligatorio")
-    private String name_user_reporter;
+    private String nameUserReporter;
 
     @NotBlank(message = "La razón es obligatoria")
     private String reason;
 
     private String comment;
 
-    private Boolean is_checked;
+    private Boolean isChecked;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "userId", insertable = false, updatable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "card_id", insertable = false, updatable = false)
+    @JoinColumn(name = "cardId", insertable = false, updatable = false)
     private Card card;
 }

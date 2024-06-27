@@ -52,7 +52,7 @@ public class LibraryController {
 
     @PutMapping("/{id}")
     public Library updateLibrary(@PathVariable Integer id, @RequestBody Library library) {
-        library.setLibrary_id(id);
+        library.setLibraryId(id);
         return libraryService.saveLibrary(library);
     }
 

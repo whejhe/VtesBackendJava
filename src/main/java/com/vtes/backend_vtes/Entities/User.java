@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -25,16 +24,10 @@ import lombok.*;
 @Entity
 @Table(name = "usuario")
 public class User implements Serializable {
-    public User(int user_id2, String username2, String lastname2, String string, String country2, String city2,
-            String address2, String phone2, boolean b, String nick2, String email2, String avatar_url2,
-            String password2) {
-        //TODO Auto-generated constructor stub
-    }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY, generator="user_sequence")
-    @SequenceGenerator(name="user_sequence", sequenceName="user_sequence", allocationSize=100)
-    private Integer user_id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer userId;
 
     @NotBlank(message = "El nombre es Obligatorio")
     private String username;
@@ -59,7 +52,7 @@ public class User implements Serializable {
     private String phone;
 
     @NotBlank(message = "El estado de la cuenta es obligatorio")
-    private String state_account;
+    private String stateAccount;
 
     @NotBlank(message = "Añade un Nick")
     private String nick;
@@ -68,7 +61,7 @@ public class User implements Serializable {
     @Email(message = "El Email no es valido")
     private String email;
 
-    private String avatar_url;
+    private String avatarUrl;
 
     @NotBlank(message = "La contraseña es obligatoria")
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{5,}$", message = "La contraseña debe tener al menos 5 caracteres, una mayúscula y un número")

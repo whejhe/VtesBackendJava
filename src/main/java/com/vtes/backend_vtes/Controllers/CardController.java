@@ -52,7 +52,7 @@ public class CardController {
 
     @PutMapping("/{id}")
     public Card updateCard(@PathVariable Integer id, @RequestBody Card card) {
-        card.setCard_id(id);
+        card.setCardId(id);
         return cardService.saveCard(card);
     }
 

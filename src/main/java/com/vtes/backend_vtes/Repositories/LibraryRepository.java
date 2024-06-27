@@ -8,27 +8,27 @@ import com.vtes.backend_vtes.Entities.Library;
 @Repository
 public interface LibraryRepository extends JpaRepository<Library, Integer> {
 
-    Library findByLibrary_id(Integer library_id);
+    Library findByLibraryId(Integer libraryId);
 
-    List<Library> findByUser_id(Integer user_id);
+    List<Library> findByUserId(Integer userId);
 
-    List<Library> findByDeck_id(Integer deck_id);
+    List<Library> findByDeckId(Integer deckId);
 
-    List<Library> findByCard_id(Integer card_id);
+    List<Library> findByCardId(Integer cardId);
 
-    List<Library> findByUser_idAndDeck_id(Integer user_id, Integer deck_id);
+    List<Library> findByUserIdAndDeckId(Integer userId, Integer deckId);
 
-    List<Library> findByUser_idAndCard_id(Integer user_id, Integer card_id);
+    List<Library> findByUserIdAndCardId(Integer userId, Integer cardId);
 
-    List<Library> findByDeck_idAndCard_id(Integer deck_id, Integer card_id);
+    List<Library> findByDeckIdAndCardId(Integer deckId, Integer cardId);
 
    //Delete
 
-    void deleteByLibrary_id(Integer library_id);
+    void deleteByLibraryId(Integer libraryId);
 
-    void deleteByUser_id(Integer user_id);
+    void deleteByUserId(Integer userId);
 
-    void deleteByDeck_id(Integer deck_id);
+    void deleteByDeckId(Integer deckId);
 
-    void deleteByCard_id(Integer card_id);
+    void deleteByCardId(Integer cardId);
 }

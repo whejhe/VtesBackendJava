@@ -9,22 +9,22 @@ import com.vtes.backend_vtes.Entities.Crypt;
 public interface CryptRepository extends JpaRepository<Crypt, Integer> {
 
     // finders
-    Crypt findByCrypt_id(Integer crypt_id);
+    Crypt findByCryptId(Integer cryptId);
 
-    List<Crypt> findByUser_id(Integer user_id);
+    List<Crypt> findByUserId(Integer userId);
 
-    List<Crypt> findByDeck_id(Integer deck_id);
+    List<Crypt> findByDeckId(Integer deckId);
 
-    List<Crypt> findByCard_id(Integer card_id);
+    List<Crypt> findByCardId(Integer cardId);
 
     // delete
-    void deleteByCrypt_id(Integer crypt_id);
+    void deleteByCryptId(Integer cryptId);
 
-    void deleteByUser_id(Integer user_id);
+    void deleteByUserId(Integer userId);
 
-    void deleteByDeck_id(Integer deck_id);
+    void deleteByDeckId(Integer deckId);
 
-    void deleteByCard_id(Integer card_id);
+    void deleteByCardId(Integer cardId);
 
-    void deleteByUser_idAndDeck_id(Integer user_id, Integer deck_id);
+    void deleteByUserIdAndDeckId(Integer userId, Integer deckId);
 }

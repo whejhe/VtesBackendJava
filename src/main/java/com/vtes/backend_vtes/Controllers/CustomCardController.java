@@ -52,7 +52,7 @@ public class CustomCardController {
 
     @PutMapping("/{id}")
     public CustomCard updateCustomCard(@PathVariable Integer id, @RequestBody CustomCard customCard) {
-        customCard.setCustom_card_id(id);
+        customCard.setCustomCardId(id);
         return customCardService.saveCustomCard(customCard);
     }
 

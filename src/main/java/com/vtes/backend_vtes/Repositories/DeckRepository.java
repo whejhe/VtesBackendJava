@@ -8,11 +8,11 @@ import com.vtes.backend_vtes.Entities.Deck;
 @Repository
 public interface DeckRepository extends JpaRepository<Deck, Integer> {
 
-    Deck findByDeck_id(Integer deck_id);
+    Deck findByDeckId(Integer deckId);
 
-    Deck findByUser_id(Integer user_id);
+    Deck findByUserId(Integer userId);
 
-    Deck findByDeck_name(String deck_name);
+    Deck findByDeckName(String deckName);
 
     List<Deck> findByAuthor(String author);
 

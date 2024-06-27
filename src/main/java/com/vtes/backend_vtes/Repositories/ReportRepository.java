@@ -9,36 +9,36 @@ import com.vtes.backend_vtes.Entities.Report;
 public interface ReportRepository extends JpaRepository<Report, Integer> {
 
     // finders
-    Report findByReport_id(Integer report_id);
+    Report findByReportId(Integer reportId);
 
-    List<Report> findByUser_id(Integer user_id);
+    List<Report> findByUserId(Integer userId);
 
-    List<Report> findByCard_id(Integer card_id);
+    List<Report> findByCardId(Integer cardId);
 
-    List<Report> findByCard_name(String card_name);
+    List<Report> findByCardName(String cardName);
 
-    List<Report> findByCard_author(String card_author);
+    List<Report> findByCardAuthor(String cardAuthor);
 
-    List<Report> findByEmail_reporter(String email_reporter);
+    List<Report> findByEmailReporter(String emailReporter);
 
-    List<Report> findByName_user_reporter(String name_user_reporter);
+    List<Report> findByNameUserReporter(String nameUserReporter);
 
     List<Report> findByReason(String reason);
 
     // Delete
-    void deleteByReport_id(Integer report_id);
+    void deleteByReportId(Integer reportId);
 
-    void deleteByUser_id(Integer user_id);
+    void deleteByUserId(Integer userId);
 
-    void deleteByCard_id(Integer card_id);
+    void deleteByCardId(Integer cardId);
 
-    void deleteByCard_name(String card_name);
+    void deleteByCardName(String cardName);
 
-    void deleteByCard_author(String card_author);
+    void deleteByCardAuthor(String cardAuthor);
 
-    void deleteByEmail_reporter(String email_reporter);
+    void deleteByEmailReporter(String emailReporter);
 
-    void deleteByName_user_reporter(String name_user_reporter);
+    void deleteByNameUserReporter(String nameUserReporter);
 
     void deleteByReason(String reason);
 }

@@ -52,7 +52,7 @@ public class DeckController {
 
     @PutMapping("/{id}")
     public Deck updateDeck(@PathVariable Integer id, @RequestBody Deck deck) {
-        deck.setDeck_id(id);
+        deck.setDeckId(id);
         return deckService.saveDeck(deck);
     }
 

@@ -31,7 +31,7 @@ public class ReportService {
 
     public List<Report> getReportsByUserId(Integer userId) {
         try {
-            return reportRepository.findByUser_id(userId);
+            return reportRepository.findByUserId(userId);
         } catch (Exception e) {
             throw new RuntimeException(
                     "Error al obtener las cartas del usuario con ID " + userId + ": " + e.getMessage());
@@ -40,7 +40,7 @@ public class ReportService {
 
     public List<Report> getReportsByCardId(Integer cardId) {
         try {
-            return reportRepository.findByCard_id(cardId);
+            return reportRepository.findByCardId(cardId);
         } catch (Exception e) {
             throw new RuntimeException(
                     "Error al obtener las cartas de la carta con ID " + cardId + ": " + e.getMessage());
@@ -49,7 +49,7 @@ public class ReportService {
 
     public List<Report> getReportsByCardName(String cardName) {
         try {
-            return reportRepository.findByCard_name(cardName);
+            return reportRepository.findByCardName(cardName);
         } catch (Exception e) {
             throw new RuntimeException(
                     "Error al obtener las cartas de la carta con nombre " + cardName + ": " + e.getMessage());
@@ -58,7 +58,7 @@ public class ReportService {
 
     public List<Report> getReportsByCardAuthor(String cardAuthor) {
         try {
-            return reportRepository.findByCard_author(cardAuthor);
+            return reportRepository.findByCardAuthor(cardAuthor);
         } catch (Exception e) {
             throw new RuntimeException(
                     "Error al obtener las cartas de la carta con autor " + cardAuthor + ": " + e.getMessage());
@@ -67,7 +67,7 @@ public class ReportService {
 
     public List<Report> getReportsByEmailReporter(String emailReporter) {
         try {
-            return reportRepository.findByEmail_reporter(emailReporter);
+            return reportRepository.findByEmailReporter(emailReporter);
         } catch (Exception e) {
             throw new RuntimeException(
                     "Error al obtener las cartas del usuario con email " + emailReporter + ": " + e.getMessage());
@@ -76,7 +76,7 @@ public class ReportService {
 
     public List<Report> getReportsByNameUserReporter(String nameUserReporter) {
         try {
-            return reportRepository.findByName_user_reporter(nameUserReporter);
+            return reportRepository.findByNameUserReporter(nameUserReporter);
         } catch (Exception e) {
             throw new RuntimeException(
                     "Error al obtener las cartas del usuario con nombre " + nameUserReporter + ": " + e.getMessage());
@@ -104,21 +104,21 @@ public class ReportService {
     // UPDATE
     public Report updateReport(Report report) {
         try {
-            Optional<Report> existingReport = reportRepository.findById(report.getReport_id());
+            Optional<Report> existingReport = reportRepository.findById(report.getReportId());
             if (existingReport.isPresent()) {
                 Report updatedReport = existingReport.get();
-                updatedReport.setUser_id(report.getUser_id());
-                updatedReport.setCard_id(report.getCard_id());
-                updatedReport.setCard_name(report.getCard_name());
-                updatedReport.setCard_author(report.getCard_author());
-                updatedReport.setEmail_reporter(report.getEmail_reporter());
-                updatedReport.setName_user_reporter(report.getName_user_reporter());
+                updatedReport.setUserId(report.getUserId());
+                updatedReport.setCardId(report.getCardId());
+                updatedReport.setCardName(report.getCardName());
+                updatedReport.setCardAuthor(report.getCardAuthor());
+                updatedReport.setEmailReporter(report.getEmailReporter());
+                updatedReport.setNameUserReporter(report.getNameUserReporter());
                 updatedReport.setReason(report.getReason());
                 updatedReport.setComment(report.getComment());
-                updatedReport.setIs_checked(report.getIs_checked());
+                updatedReport.setIsChecked(report.getIsChecked());
                 return reportRepository.save(updatedReport);
             } else {
-                throw new RuntimeException("Report not found with id: " + report.getReport_id());
+                throw new RuntimeException("Report not found with id: " + report.getReportId());
             }
         } catch (Exception e) {
             throw new RuntimeException("Error al actualizar la carta: " + e.getMessage());
@@ -137,7 +137,7 @@ public class ReportService {
     // DELETE BY USER ID
     public void deleteReportsByUserId(Integer userId) {
         try {
-            reportRepository.deleteByUser_id(userId);
+            reportRepository.deleteByUserId(userId);
         } catch (Exception e) {
             throw new RuntimeException("Error al borrar las cartas del usuario " + userId + ": " + e.getMessage());
         }
@@ -146,7 +146,7 @@ public class ReportService {
     // DELETE BY CARD ID
     public void deleteReportsByCardId(Integer cardId) {
         try {
-            reportRepository.deleteByCard_id(cardId);
+            reportRepository.deleteByCardId(cardId);
         } catch (Exception e) {
             throw new RuntimeException("Error al borrar las cartas de la carta " + cardId + ": " + e.getMessage());
         }
@@ -155,7 +155,7 @@ public class ReportService {
     // DELETE BY CARD NAME
     public void deleteReportsByCardName(String cardName) {
         try {
-            reportRepository.deleteByCard_name(cardName);
+            reportRepository.deleteByCardName(cardName);
         } catch (Exception e) {
             throw new RuntimeException("Error al borrar las cartas de la carta " + cardName + ": " + e.getMessage());
         }
@@ -164,7 +164,7 @@ public class ReportService {
     // DELETE BY CARD AUTHOR
     public void deleteReportsByCardAuthor(String cardAuthor) {
         try {
-            reportRepository.deleteByCard_author(cardAuthor);
+            reportRepository.deleteByCardAuthor(cardAuthor);
         } catch (Exception e) {
             throw new RuntimeException("Error al borrar las cartas de la carta " + cardAuthor + ": " + e.getMessage());
         }
@@ -173,7 +173,7 @@ public class ReportService {
     // DELETE BY EMAIL REPORTER
     public void deleteReportsByEmailReporter(String emailReporter) {
         try {
-            reportRepository.deleteByEmail_reporter(emailReporter);
+            reportRepository.deleteByEmailReporter(emailReporter);
         } catch (Exception e) {
             throw new RuntimeException(
                     "Error al borrar las cartas del usuario " + emailReporter + ": " + e.getMessage());
@@ -183,7 +183,7 @@ public class ReportService {
     // DELETE BY NAME USER REPORTER
     public void deleteReportsByNameUserReporter(String nameUserReporter) {
         try {
-            reportRepository.deleteByName_user_reporter(nameUserReporter);
+            reportRepository.deleteByNameUserReporter(nameUserReporter);
         } catch (Exception e) {
             throw new RuntimeException(
                     "Error al borrar las cartas del usuario " + nameUserReporter + ": " + e.getMessage());

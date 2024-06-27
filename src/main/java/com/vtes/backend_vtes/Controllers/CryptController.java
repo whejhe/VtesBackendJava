@@ -81,7 +81,7 @@ public class CryptController {
         try {
             Optional<Crypt> existingCrypt = cryptService.getCryptById(id);
             if (existingCrypt.isPresent()) {
-                crypt.setCrypt_id(id);
+                crypt.setCryptId(id);
                 return cryptService.updateCrypt(crypt);
             } else {
                 throw new RuntimeException("Crypt not found with id: " + id);

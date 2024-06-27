@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -17,17 +16,16 @@ import lombok.*;
 @Setter
 @ToString
 @Entity
-@Table(name = "custom_card")
+@Table(name = "customCard")
 public class CustomCard {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY, generator="custom_card_sequence")
-    @SequenceGenerator(name="custom_card_sequence", sequenceName="custom_card_sequence", allocationSize=100)
-    private Integer custom_card_id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer customCardId;
 
-    private Integer user_id;
+    private Integer userId;
 
     @NotBlank(message = "El nombre de la carta personalizada es obligatorio")
-    private String custom_card_name;
+    private String customCardName;
 
     @NotBlank(message = "El autor es obligatorio")
     private String author;
@@ -35,29 +33,29 @@ public class CustomCard {
     private Integer capacity;
 
     @NotBlank(message = "La URL de la carta personalizada es obligatoria")
-    private String custom_card_url;
+    private String customCardUrl;
 
     private String clan;
 
     private String disciplines;
 
-    private Integer group_vampire;
+    private Integer groupVampire;
 
     @NotBlank(message = "El tipo de carta personalizada es obligatorio")
-    private String custom_card_type;
+    private String customCardType;
 
-    private String logo_color;
+    private String logoColor;
 
     @NotBlank(message = "El texto de la carta personalizada es obligatorio")
-    private String custom_card_text;
+    private String customCardText;
 
-    private Boolean is_public;
+    private Boolean isPublic;
 
-    private Integer cost_pool;
+    private Integer costPool;
 
-    private Integer cost_blood;
+    private Integer costBlood;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "userId", insertable = false, updatable = false)
     private User user;
 }

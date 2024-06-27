@@ -31,14 +31,14 @@ public class UserController {
     }
 
     @PostMapping
-    public User saveUser(@RequestBody User user) {
-        return userService.saveUser(user);
+    public User saveUser(@RequestBody User usuario) {
+        return userService.saveUser(usuario);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Integer id, @RequestBody User user) {
-        user.setUser_id(id);
-        return userService.saveUser(user);
+    public User updateUser(@PathVariable Integer id, @RequestBody User usuario) {
+        usuario.setUserId(id);
+        return userService.saveUser(usuario);
     }
 
     @DeleteMapping("/{id}")

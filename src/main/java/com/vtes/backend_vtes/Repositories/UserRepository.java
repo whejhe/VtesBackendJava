@@ -8,7 +8,7 @@ import com.vtes.backend_vtes.Entities.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     
-    User findByUser_id(Integer user_id);
+    User findByUserId(Integer userId);
 
     User findByEmail(String email);
     
