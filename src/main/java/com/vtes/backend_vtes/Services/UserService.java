@@ -70,7 +70,7 @@ public class UserService {
         }
     }
 
-    public List<User> getUserByUsername(String username) {
+    public Optional<User> getUserByUsername(String username) {
         try {
             return userRepository.findByUsername(username);
         } catch (Exception e) {

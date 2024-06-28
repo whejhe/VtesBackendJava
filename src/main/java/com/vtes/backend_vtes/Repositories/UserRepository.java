@@ -1,6 +1,8 @@
 package com.vtes.backend_vtes.Repositories;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.vtes.backend_vtes.Entities.User;
@@ -15,8 +17,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     User findByNick(String nick);
     
     User findByPhone(String phone);
-    
-    List<User> findByUsername(String username);
+
+    Optional<User> findByUsername(String username);
+
+    // List<User> findByUsername(String username);
 
     List<User> findByCity(String city);
 
